@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="card-body p-0">
-                    <table class="table table-striped table-hover table-user table-action-hover table-produk">
+                    <table class="table table-striped table-hover table-user table-action-hover table-produk" id="table-data">
                         <thead>
                             <tr>
                                 <th width="5%" class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">ID <span id="id_icon"></span></th>
@@ -94,7 +94,7 @@
             <div class="form-group">
               <label for="kategori">kategori produk</label>
               <select name="kategori" id="" class="form-control">
-                  <option value="1">Rack</option>
+                  <option value="1">print</option>
               </select>
           </div>
             <div class="form-group">

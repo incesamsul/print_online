@@ -43,23 +43,11 @@
                         </p>
                     </div>
                     <div class="product-select">
-                        <form method="POST" action="{{ URL::to('/add-to-cart/'.$detail_produk->id_produk) }}">
+                        <form method="POST" action="{{ URL::to('/add-to-cart/'.$detail_produk->id_produk) }}" enctype="multipart/form-data">
                             @csrf
-                            {{-- <div class="form-group">
-                                <label>Size</label>
-                                <select class="form-control">
-                                    <option>-- Size --</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Color</label>
-                                <select class="form-control">
-                                    <option>-- Color --</option>
-                                </select>
-                            </div> --}}
                             <div class="row">
                                 <div class="col-md-3">
-                                    <input type="number" class="form-control" value="1" name="qty"/>
+                                    <input required type="file" class="form-control" name="file"/>
                                 </div>
                                 <div class="col-md-5">
                                     <button type="submit" class="btn bg-main text-white btn-block">Add to Cart</button>

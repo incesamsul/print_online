@@ -26,11 +26,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/postlogin', [LoginController::class, 'postLogin']);
+Route::post('/postRegistrasi', [LoginController::class, 'postRegistrasi']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/', [Home::class, 'beranda']);
 Route::get('/detail/{id_produk}', [Admin::class, 'detailProduk']);
-Route::post('/add-to-cart/{id_produk}', [Home::class, 'addToCart']);
-Route::get('/remove-from-cart/{id_produk}', [Home::class, 'removeFromCart']);
 Route::get('/cart', [Home::class, 'cart']);
 
 
@@ -40,6 +39,7 @@ Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/registrasi', [LoginController::class, 'registrasi']);
 });
 
 // GENERAL CONTROLLER ROUTE
@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
 
 // ADMIN ROUTE
 Route::group(['middleware' => ['auth', 'ceklevel:user']], function () {
+    Route::post('/add-to-cart/{id_produk}', [UserController::class, 'addToCart']);
+    Route::get('/remove-from-cart/{id_cart}', [UserController::class, 'removeFromCart']);
 });
 
 

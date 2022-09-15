@@ -17,7 +17,7 @@ class CreateCartTable extends Migration
             $table->increments('id_cart');
             $table->unsignedBigInteger('id_user');
             $table->unsignedInteger('id_produk');
-            $table->integer('qty');
+            $table->string('file');
             $table->integer('total');
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_produk')->references('id_produk')->on('produk')->onUpdate('cascade')->onDelete('cascade');

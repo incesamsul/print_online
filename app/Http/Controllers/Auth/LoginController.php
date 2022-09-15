@@ -15,6 +15,33 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function registrasi()
+    {
+        return view('auth.registrasi');
+    }
+
+    public function postRegistrasi(Request $request)
+    {
+        $emailCek = User::where('email', '=', $request->email)->first();
+
+        if ($emailCek) {
+            return redirect('/registrasi')->with('fail', 'email sudah terdaftar');
+        }
+
+        if ($request->password != $request->konfirmasi_password) {
+            return redirect('/registrasi')->with('fail', 'password tdk match');
+        }
+        User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'user'
+        ]);
+
+        return redirect('/registrasi')->with('message', 'registrasi berhasil di lakukan');
+    }
+
+
     public function postLogin(Request $request)
     {
         $user = User::where('email', $request->email)
@@ -25,6 +52,9 @@ class LoginController extends Controller
             if (password_verify($request->password, $user->password)) {
 
                 Auth::login($user);
+                if ($user->role == 'user') {
+                    return redirect('/');
+                }
                 return redirect('/dashboard');
             } else {
                 return redirect('/login')->with('fail', 'Password yang anda masukan salah');

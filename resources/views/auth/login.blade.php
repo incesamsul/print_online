@@ -8,7 +8,7 @@
                 <div class="container-fluid login-wrapper ">
                     <div class="row login-row">
                         <div class="col-md-4 login-sec ">
-                            <h2 class="text-center mt-5">print online</h2>
+                            <h2 class="text-center mt-5">Login</h2>
                             @if (session('fail'))
                             <p class="text-danger">{{ session('fail') }}</p>
                             @endif
@@ -17,7 +17,8 @@
                                 <div class="form-group">
                                     <i class="fa fa-user" style="font-size: 12px"></i>
                                     <label for="email" class="text-uppercase">Email</label>
-                                    <input name="email" type="text" class="form-control" placeholder="Masukkan email anda">
+                                    <input name="email" type="text" class="form-control"
+                                        placeholder="Masukkan email anda">
 
                                 </div>
                                 <div class="form-group">
@@ -29,11 +30,12 @@
                                 <a style="visibility: hidden" href="#" class="forgot"><u> Forgot Your Password?</u></a>
                                 <button type="submit" class="btn text-white form-control bg-main">Login</button>
                             </form>
-                            {{-- <div class="copy-text">Copyright © 2021 ♦ print online.</div> --}}
+                            <div class="copy-text text-center my-4">Belum punya akun? <a
+                                    href="{{ URL::to('/registrasi') }}">Registrasi</a>.</div>
                         </div>
                         <div class="col-md-8 banner-sec d-flex justify-content-center">
-                            <img class="d-block img-fluid" src="{{ asset('img/jpg/slider/1.svg') }}"
-                                            alt="First slide" style="max-width:70%">
+                            <img class="d-block img-fluid" src="{{ asset('img/jpg/slider/1.svg') }}" alt="First slide"
+                                style="max-width:70%">
                         </div>
                     </div>
             </section>

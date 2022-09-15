@@ -10,20 +10,11 @@ use PhpParser\Node\Expr\FuncCall;
 
 use function PHPUnit\Framework\isNull;
 
-function getKategoriMenu(){
-    return KategoriModel::all();
-}
-
-function getNamaKategoriById($idKategori){
-    return KategoriModel::where('id_kategori',$idKategori)->first();
-}
-
-
-function isThisMyFavorit($idInfo){
-    return FavoritModel::where([
-        'id_user' => auth()->user()->id,
-        'id_info' => $idInfo
-    ])->first();
+function count_pdf_pages($fileName) {
+    $path = public_path() . '/data/file_print/' . $fileName;
+    $pdf = file_get_contents($path);
+    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
+    return $number;
 }
 
 function removeSpace($string)

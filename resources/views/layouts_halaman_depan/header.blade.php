@@ -20,7 +20,8 @@
     <link type="text/css" href="{{ asset('theme-indomarket-master/assets/css/jquery-ui.css') }}" rel="stylesheet">
 
     <!-- Argon CSS -->
-    <link type="text/css" href="{{ asset('theme-indomarket-master/assets/css/argon-design-system.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('theme-indomarket-master/assets/css/argon-design-system.min.css') }}"
+        rel="stylesheet">
 
     <!-- Main CSS-->
     <link type="text/css" href="{{ asset('theme-indomarket-master/assets/css/style.css') }}" rel="stylesheet">
@@ -39,14 +40,18 @@
                 <div class="row">
                     <div class="col-6 text-left">
                         <ul class="top-links contact-info">
-                            <li><i class="fa fa-envelope-o"></i> <a href="#">contact@example.com</a></li>
-                            <li><i class="fa fa-whatsapp"></i> +62819 7735 4535</li>
+                            <li><i class="fa fa-envelope-o"></i> <a href="#">printotomatis@gmail.com</a></li>
+                            <li><i class="fa fa-whatsapp"></i> +6281 234 54334</li>
                         </ul>
                     </div>
                     <div class="col-6 text-right">
                         <ul class="top-links account-links">
+                            @if (auth()->user())
                             <li><i class="fa fa-user-circle-o"></i> <a href="#">My Account</a></li>
+                            <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/logout') }}">Logout</a></li>
+                            @else
                             <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/login') }}">Login</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -81,7 +86,17 @@
                             </div>
                             <div class="single-icon shopping-cart">
                                 <a href="{{ URL::to('/cart') }}"><i class="text-main fa fa-shopping-cart fa-2x"></i></a>
-                                <span class="badge badge-default">{{ session('cart') ? count(session('cart')) : 0 }}</span>
+                                <?php 
+                                if(auth()->user())
+                                {
+                                    $cart = App\Models\Cart::where('id_user', auth()->user()->id)->get();
+                                }
+
+                                ?>
+                                @if (auth()->user())
+                                <span class="badge badge-default">{{ count($cart) > 0 ? count($cart) : 0
+                                }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -105,7 +120,8 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">Pages</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                                aria-expanded="true">Pages</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="products.html">Products</a>
                                 <a class="dropdown-item" href="product-detail.html">Product Detail</a>
@@ -120,8 +136,8 @@
     </header>
 
     @if (session('message'))
-{{ sweetAlert(session('message'), 'success') }}
-@endif
-@if (session('error'))
-{{ sweetAlert(session('error'), 'warning') }}
-@endif
+    {{ sweetAlert(session('message'), 'success') }}
+    @endif
+    @if (session('error'))
+    {{ sweetAlert(session('error'), 'warning') }}
+    @endif

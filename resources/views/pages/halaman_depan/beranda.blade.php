@@ -43,15 +43,15 @@
                             <div class="carousel-item">
                                 <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="Third slide">
                                 <div class="carousel-caption d-none d-md-block"></div>
-                                    {{-- <h5>Living the Dream, Lost Island</h5> --}}
-                                </div>
+                                {{-- <h5>Living the Dream, Lost Island</h5> --}}
                             </div>
                         </div>
                     </div>
-                    <!-- End Slider -->
                 </div>
+                <!-- End Slider -->
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -65,9 +65,9 @@
                         <i class="fa fa-truck"></i>
                     </div>
                     <div class="media-body">
-                        <h5>Fast Shipping</h5>
+                        <h5>Cod</h5>
                         <p class="text-muted">
-                            All you have to do is to bring your passion. We take care of the rest.
+                            bayar di tempat alias bayar saat bertemu langsung.
                         </p>
                     </div>
                 </div>
@@ -78,9 +78,9 @@
                         <i class="fa fa-credit-card-alt"></i>
                     </div>
                     <div class="media-body">
-                        <h5>Online Payment</h5>
+                        <h5>Pembayaran online</h5>
                         <p class="text-muted">
-                            All you have to do is to bring your passion. We take care of the rest.
+                            pembayaran online dengan berbagai macam chanel pembayaran
                         </p>
                     </div>
                 </div>
@@ -91,9 +91,9 @@
                         <i class="fa fa-refresh"></i>
                     </div>
                     <div class="media-body">
-                        <h5>Free Return</h5>
+                        <h5>Pengembalian</h5>
                         <p class="text-muted">
-                            All you have to do is to bring your passion. We take care of the rest.
+                            kemudahan pengembalian saat terjadi kesalahan
                         </p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                 <div class="single-product">
                     <div class="product-img">
                         <a href="{{ URL::to('/detail/' . $row->id_produk) }}">
-                            <img src="{{ asset('/data/gambar_produk/'. $row->gambar_produk) }}" class="img-fluid" >
+                            <img src="{{ asset('/data/gambar_produk/'. $row->gambar_produk) }}" class="img-fluid">
                         </a>
                     </div>
                     <div class="product-content">

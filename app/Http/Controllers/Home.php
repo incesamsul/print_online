@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\ProdukModel;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class Home extends Controller
 
     public function cart()
     {
-        return view('pages.halaman_depan.cart');
+        $data['cart'] = Cart::where('id_user',auth()->user()->id)->get();
+        return view('pages.halaman_depan.cart',$data);
     }
 
     public function addToCart(Request $request, $idProduk)

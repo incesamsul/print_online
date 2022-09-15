@@ -12,3 +12,4 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ro
 (2, 'user', 'user@mail.com', NULL, '$2y$10$rzbEl5L/96hsivMG1QDkp.Y6kNXGIDUOMmYxnuWSBK8EmFPxpoHn6', 'user', '61b5dcc0ab820.png', NULL, '2021-11-24 21:15:14', '2021-12-12 03:28:00'),
 (3, 'penilai1', 'penilai1@mail.com', NULL, '$2y$10$nmqzXCRDpJb9asVkZKvsduSHMsMlPMn7g.pFz0Lq6SIIGh7EaIxda', 'penilai', '', NULL, '2021-11-26 10:13:42', '2021-11-26 10:13:42');
 
+INSERT INTO `category` (`id_category`, `nama_category`, `created_at`, `updated_at`) VALUES ('1', 'print', NULL, NULL);
