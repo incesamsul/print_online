@@ -2,6 +2,7 @@
 
 use App\Models\FavoritModel;
 use App\Models\KategoriModel;
+use App\Models\Like;
 use App\Models\LogAktivitasModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -15,6 +16,10 @@ function count_pdf_pages($fileName) {
     $pdf = file_get_contents($path);
     $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
     return $number;
+}
+
+function isLike($idUser, $idProduk){
+    return Like::where('id_user', $idUser)->where('id_produk', $idProduk)->first();
 }
 
 function removeSpace($string)

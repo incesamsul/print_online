@@ -53,7 +53,13 @@
                                     <button type="submit" class="btn bg-main text-white btn-block">Add to Cart</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="#" class="btn btn-secondary"><i class="fa fa-heart-o"></i></a>
+                                    @if (auth()->user())
+                                    @if (isLike(auth()->user()->id, $detail_produk->id_produk))
+                                    <a href="{{ URL::to('/unlike/' . $detail_produk->id_produk) }}" class="btn btn-secondary"><i class="fa fa-heart text-danger"></i></a>
+                                    @else    
+                                    <a href="{{ URL::to('/like/' . $detail_produk->id_produk) }}" class="btn btn-secondary"><i class="fa fa-heart-o"></i></a>
+                                    @endif
+                                    @endif
                                 </div>
                             </div>
                         </form>

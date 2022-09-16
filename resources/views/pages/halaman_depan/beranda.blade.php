@@ -9,14 +9,9 @@
                     <nav class="nav-category">
                         <h2>Categories</h2>
                         <ul class="menu-category">
-                            <li><a href="#">A4</a></li>
-                            <li><a href="#">A4</a></li>
-                            <li><a href="#">F4</a></li>
-                            {{-- <li><a href="#">Electronics</a></li>
-                            <li><a href="#">Home and Kitchen</a></li>
-                            <li><a href="#">Baby and Toys</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Digital Goods</a></li> --}}
+                            @foreach ($kategori as $row)
+                                <li><a href="#">{{ $row->nama_category }}</a></li>
+                            @endforeach
                         </ul>
                     </nav>
                 </div>
@@ -29,19 +24,19 @@
                         </ol>
                         <div class="carousel-inner shadow-sm rounded">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="First slide">
+                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="First slide" width="100" height="100">
                                 <div class="carousel-caption d-none d-md-block">
                                     {{-- <h5>Keranjang</h5> --}}
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="Second slide">
+                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="Second slide" width="100" height="100">
                                 <div class="carousel-caption d-none d-md-block">
                                     {{-- <h5>Freedom, Sea Collection</h5> --}}
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="Third slide">
+                                <img class="d-block w-100" src="{{ asset('img/jpg/slider/1.svg') }}" alt="Third slide" width="100" height="100">
                                 <div class="carousel-caption d-none d-md-block"></div>
                                 {{-- <h5>Living the Dream, Lost Island</h5> --}}
                             </div>
@@ -107,7 +102,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Item terbaru</h2>
+                    <h2>Daftar Layangan </h2>
                 </div>
             </div>
         </div>

@@ -30,8 +30,10 @@ Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::post('/postRegistrasi', [LoginController::class, 'postRegistrasi']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/', [Home::class, 'beranda']);
+Route::get('/about_us', [Home::class, 'aboutUs']);
 Route::get('/detail/{id_produk}', [Admin::class, 'detailProduk']);
 Route::get('/cart', [Home::class, 'cart']);
+Route::get('/like', [Home::class, 'like']);
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 
@@ -56,9 +58,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
 // ADMIN ROUTE
 Route::group(['middleware' => ['auth', 'ceklevel:user']], function () {
     Route::post('/add-to-cart/{id_produk}', [UserController::class, 'addToCart']);
+    Route::get('/like/{id_produk}', [UserController::class, 'like']);
+    Route::get('/unlike/{id_produk}', [UserController::class, 'unlike']);
     Route::get('/remove-from-cart/{id_cart}', [UserController::class, 'removeFromCart']);
     Route::post('/transaksi', [TransaksiController::class, 'store']);
     Route::get('/detail_transaksi/{reference}', [TransaksiController::class, 'detailTransaksi']);
+    Route::get('/my_account', [UserController::class, 'myAccount']);
+    Route::get('/my_transaksi', [UserController::class, 'myTransaksi']);
 });
 
 

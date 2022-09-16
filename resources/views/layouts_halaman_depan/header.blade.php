@@ -47,7 +47,7 @@
                     <div class="col-6 text-right">
                         <ul class="top-links account-links">
                             @if (auth()->user())
-                            <li><i class="fa fa-user-circle-o"></i> <a href="#">My Account</a></li>
+                            <li><i class="fa fa-user-circle-o"></i> <a href="{{ URL::to('/my_account') }}">My Account</a></li>
                             <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/logout') }}">Logout</a></li>
                             @else
                             <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/login') }}">Login</a></li>
@@ -81,8 +81,18 @@
                     <div class="col-lg-2 col-12 col-sm-6">
                         <div class="right-icons pull-right d-none d-lg-block">
                             <div class="single-icon wishlist">
-                                <a href="#"><i class="text-main fa fa-heart-o fa-2x"></i></a>
-                                <span class="badge badge-default">5</span>
+                                <a href="{{ URL::to('/like') }}"><i class="text-main fa fa-heart-o fa-2x"></i></a>
+                                <?php 
+                                if(auth()->user())
+                                {
+                                    $like = App\Models\Like::where('id_user', auth()->user()->id)->get();
+                                }
+
+                                ?>
+                                @if (auth()->user())
+                                <span class="badge badge-default">{{ count($like) > 0 ? count($like) : 0
+                                }}</span>
+                                @endif
                             </div>
                             <div class="single-icon shopping-cart">
                                 <a href="{{ URL::to('/cart') }}"><i class="text-main fa fa-shopping-cart fa-2x"></i></a>
@@ -114,19 +124,18 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="{{ URL::to('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="{{ URL::to('/about_us') }}">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                                 aria-expanded="true">Pages</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="products.html">Products</a>
-                                <a class="dropdown-item" href="product-detail.html">Product Detail</a>
                                 <a class="dropdown-item" href="{{ URL::to('/cart') }}">Cart</a>
-                                <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                <a class="dropdown-item" href="{{ URL::to('/my_account') }}">My Account</a>
+                                <a class="dropdown-item" href="{{ URL::to('/logout') }}">Logout</a>
                             </div>
                         </li>
                     </ul>

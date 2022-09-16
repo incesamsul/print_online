@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Payment\TripayController;
 use App\Models\Cart;
+use App\Models\CategoryModel;
+use App\Models\Like;
 use App\Models\ProdukModel;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,14 @@ class Home extends Controller
     public function beranda()
     {
         $data['produk'] = ProdukModel::all();
+        $data['kategori'] = CategoryModel::all();
         return view('pages.halaman_depan.beranda', $data);
+    }
+
+
+    public function aboutUs()
+    {
+        return view('pages.halaman_depan.about_us');
     }
 
     public function cart()
@@ -25,6 +34,16 @@ class Home extends Controller
         $data['channels'] = $tripay->getPaymentChannels();
         $data['cart'] = Cart::where('id_user', auth()->user()->id)->get();
         return view('pages.halaman_depan.cart', $data);
+    }
+
+    public function like()
+    {
+        if (auth()->user() == null) {
+            return redirect()->back()->with('message', 'login terlebih dahulu');
+        }
+
+        $data['like'] = Like::where('id_user', auth()->user()->id)->get();
+        return view('pages.halaman_depan.like', $data);
     }
 
     public function addToCart(Request $request, $idProduk)

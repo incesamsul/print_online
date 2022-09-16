@@ -92,10 +92,10 @@
                                     <form action="{{ URL::to('/transaksi') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id_cart" value="{{ count($cart) > 0 ? $row->id_cart : '' }}">
-                                        <input type="hidden" name="total_pembayaran" value="{{ count($cart) > 0 ? count_pdf_pages($row->file) * $row->produk->harga_produk : '' }}">
+                                        <input id="total_pembayaran" type="hidden" name="total_pembayaran" value="{{ count($cart) > 0 ? count_pdf_pages($row->file) * $row->produk->harga_produk : '' }}">
                                         <input type="hidden" name="method" value="{{ $channel->code }}">
                                         <input type="hidden" name="method" value="{{ $channel->code }}">
-                                        <button type="submit" class="card-body border-0 bg-transparent">
+                                        <button type="submit" class="card-body border-0 bg-transparent btn-request-transaksi">
                                             <img src="{{ $channel->icon_url }}" alt="" width="100">
                                             <p class="text-small mt-3">{{ $channel->name }}</p>
                                         </button>
@@ -141,6 +141,15 @@
         let path = $(this).data('path');
         $('#iframe-preview').attr('src',path);
     })
+
+    $('.btn-request-transaksi').on('click', function(e) {
+        let totalPembayaran = $('#total_pembayaran').val();
+        if(totalPembayaran < 10000){
+            alert('minimal pembayaran Rp. 10,000');
+            e.preventDefault();
+        }
+    })
+
     $('#liDashboard').addClass('active');
 
 </script>
