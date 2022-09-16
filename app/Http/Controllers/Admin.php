@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
 use App\Models\ProdukModel;
+use App\Models\Transaksi;
 use App\Models\User;
 use CreateProdukTable;
 use Illuminate\Http\Request;
@@ -35,6 +36,12 @@ class Admin extends Controller
     {
         $data['category'] = CategoryModel::all();
         return view('pages.kategori.index', $data);
+    }
+
+    public function transaksi()
+    {
+        $data['transaksi'] = Transaksi::all();
+        return view('pages.transaksi.index', $data);
     }
 
     public function produk()

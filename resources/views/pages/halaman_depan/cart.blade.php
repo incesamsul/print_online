@@ -41,7 +41,7 @@
                                         <a data-path="{{ asset('data/file_print/' . $row->file)}}"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a>
                                     </td>
                                     <td class="align-middle">{{ count_pdf_pages($row->file) }}</td>
-                                    <td class="align-middle">Rp. {{ count_pdf_pages($row->file) * $row->produk->harga_produk }}</td>
+                                    <td class="align-middle">Rp. {{ count($cart) > 0 ? number_format(count_pdf_pages($row->file) * $row->produk->harga_produk) : '' }}</td>
                                     <td class="align-middle"><a href="{{ URL::to('remove-from-cart/' . $row->id_cart) }}"><i class="fa fa-trash text-danger"></i></a></td>
                                 </tr>
                             @endforeach
@@ -76,15 +76,35 @@
                     <table class="table">
                         <tr>
                             <th>Sub total</th>
-                            <td>Rp. {{ number_format($total) }}</td>
+                            <th>Rp. {{ count($cart) > 0 ? number_format(count_pdf_pages($row->file) * $row->produk->harga_produk) : '' }}</th>
                         </tr>
                         <tr>
                             <th>Sub total</th>
-                            <td>Rp. {{ number_format($total) }}</td>
+                            <th>Rp. {{ count($cart) > 0 ? number_format(count_pdf_pages($row->file) * $row->produk->harga_produk) : '' }}</th>
                         </tr>
                     </table>
-                    <a target="_blank" href="https://web.whatsapp.com/send?phone=6281977354535&text={{ $pesan }}" class="web-btn btn btn-success text-white form-control"><i class="fa fa-whatsapp"></i> Selesaikan pesanan lewat whatsapp</a>
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone=6281977354535&text={{ $pesan }}" class="mobile-btn btn btn-success text-white form-control"><i class="fa fa-whatsapp"></i> Selesaikan pesanan lewat whatsapp</a>
+                    @if (count($cart) > 0)
+                    <h5>Pilih metode pembayaran</h5>
+                    <div class="row">
+                    @foreach ($channels as $channel)
+                            <div class="col-sm-6 my-2">
+                                <div class="card border-0 hover-card">
+                                    <form action="{{ URL::to('/transaksi') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id_cart" value="{{ count($cart) > 0 ? $row->id_cart : '' }}">
+                                        <input type="hidden" name="total_pembayaran" value="{{ count($cart) > 0 ? count_pdf_pages($row->file) * $row->produk->harga_produk : '' }}">
+                                        <input type="hidden" name="method" value="{{ $channel->code }}">
+                                        <input type="hidden" name="method" value="{{ $channel->code }}">
+                                        <button type="submit" class="card-body border-0 bg-transparent">
+                                            <img src="{{ $channel->icon_url }}" alt="" width="100">
+                                            <p class="text-small mt-3">{{ $channel->name }}</p>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            @endforeach
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -95,7 +115,7 @@
 </section>
 
 
-  
+
   <!-- Modal -->
   <div class="modal fade" id="previewFile" tabindex="-1" aria-labelledby="previewFileLabel" aria-hidden="true">
     <div class="modal-dialog">

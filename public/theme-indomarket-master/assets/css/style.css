@@ -689,3 +689,14 @@ Products Page
     }
 }
 
+
+/* MYCODE */
+
+.hover-card {
+    box-shadow: -1.1px -0.4px 1.9px rgba(0, 0, 0, 0.013), -1.8px -0.7px 4.3px rgba(0, 0, 0, 0.015), -2px -0.8px 7.7px rgba(0, 0, 0, 0.016), -1.2px -0.5px 12.8px rgba(0, 0, 0, 0.016), 1.2px 0.5px 21.2px rgba(0, 0, 0, 0.016), 8.2px 3.3px 37px rgba(0, 0, 0, 0.017), 42px 17px 80px rgba(0, 0, 0, 0.02);
+    transition: .5s;
+}
+
+.hover-card:hover {
+    box-shadow: -1.1px -0.4px 1.9px rgba(0, 0, 0, 0.038), -1.8px -0.7px 4.3px rgba(0, 0, 0, 0.045), -2px -0.8px 7.7px rgba(0, 0, 0, 0.047), -1.2px -0.5px 12.8px rgba(0, 0, 0, 0.048), 1.2px 0.5px 21.2px rgba(0, 0, 0, 0.048), 8.2px 3.3px 37px rgba(0, 0, 0, 0.05), 42px 17px 80px rgba(0, 0, 0, 0.06);
+}

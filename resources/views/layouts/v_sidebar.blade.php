@@ -31,6 +31,9 @@
                 </ul>
             </li>
 
+            <li class="" id="liTransaksi"><a class="nav-link" href="{{ URL::to('/admin/transaksi') }}"><i
+                class="fas fa-money-check"></i> <span>Transaksi</span></a></li>
+
             <li class="" id="liKategori"><a class="nav-link" href="{{ URL::to('/admin/kategori') }}"><i
                 class="fas fa-list-alt"></i> <span>Kategori</span></a></li>
 

@@ -5,9 +5,10 @@ use App\Http\Controllers\Auth\LoginController;
 
 use App\Http\Controllers\General;
 use App\Http\Controllers\Home;
-
+use App\Http\Controllers\Payment\TripayCallbackController;
+use App\Http\Controllers\Payment\TripayController;
 use App\Http\Controllers\Penilai;
-
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
@@ -32,10 +33,9 @@ Route::get('/', [Home::class, 'beranda']);
 Route::get('/detail/{id_produk}', [Admin::class, 'detailProduk']);
 Route::get('/cart', [Home::class, 'cart']);
 
-
-
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 
+Route::post('/callback', [TripayCallbackController::class, 'handle']);
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
 Route::group(['middleware' => ['auth', 'ceklevel:user']], function () {
     Route::post('/add-to-cart/{id_produk}', [UserController::class, 'addToCart']);
     Route::get('/remove-from-cart/{id_cart}', [UserController::class, 'removeFromCart']);
+    Route::post('/transaksi', [TransaksiController::class, 'store']);
+    Route::get('/detail_transaksi/{reference}', [TransaksiController::class, 'detailTransaksi']);
 });
 
 
@@ -67,6 +69,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
         Route::get('/pengguna', [Admin::class, 'pengguna']);
         Route::get('/fetch_data', [Admin::class, 'fetchData']);
         Route::get('/kategori', [Admin::class, 'kategori']);
+        Route::get('/transaksi', [Admin::class, 'transaksi']);
         Route::get('/produk', [Admin::class, 'produk']);
 
         // CRUD PRODUK
