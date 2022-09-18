@@ -18,7 +18,8 @@ class CreateProdukTable extends Migration
             $table->unsignedInteger('id_category');
             $table->string('gambar_produk');
             $table->string('nama_produk');
-            $table->integer('harga_produk');
+            $table->integer('harga_warna');
+            $table->integer('harga_bw');
             $table->string('deskripsi');
             $table->timestamps();
             $table->foreign('id_category')->references('id_category')->on('category')->onUpdate('cascade')->onDelete('cascade');

@@ -79,11 +79,38 @@ class Admin extends Controller
             'id_category' => $request->kategori,
             'gambar_produk' => $imageName,
             'nama_produk' => $request->nama_produk,
-            'harga_produk' => $request->harga_produk,
+            'harga_warna' => $request->harga_warna,
+            'harga_bw' => $request->harga_bw,
             'deskripsi' => $request->deskripsi,
         ]);
-
         return redirect()->back()->with('message', 'produk Berhasil di tambahkan');
+    }
+
+    public function ubahProduk(Request $request)
+    {
+
+        $image = $request->file('gambar');
+        if ($image) {
+            $imageName = uniqid() . '.' . 'jpg';
+            $image->move(public_path('data/gambar_produk/') . '/', $imageName);
+            ProdukModel::where('id_produk', $request->id)->update([
+                'gambar_produk' => $imageName,
+                'nama_produk' => $request->nama_produk,
+                'harga_warna' => $request->harga_warna,
+                'harga_bw' => $request->harga_bw,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        } else {
+            ProdukModel::where('id_produk', $request->id)->update([
+                'nama_produk' => $request->nama_produk,
+                'harga_warna' => $request->harga_warna,
+                'harga_bw' => $request->harga_bw,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }
+
+
+        return redirect()->back()->with('message', 'produk Berhasil di ubah');
     }
 
     public function deleteProduk(Request $request)

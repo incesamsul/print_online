@@ -34,6 +34,9 @@
 </head>
 
 <body>
+    <div id="loading">
+        <img src="{{ asset('img/svg_animated/loading.svg') }}" alt="">
+    </div>
     <header class="header clearfix">
         <div class="top-bar d-none d-sm-block">
             <div class="container">
@@ -82,7 +85,7 @@
                         <div class="right-icons pull-right d-none d-lg-block">
                             <div class="single-icon wishlist">
                                 <a href="{{ URL::to('/like') }}"><i class="text-main fa fa-heart-o fa-2x"></i></a>
-                                <?php 
+                                <?php
                                 if(auth()->user())
                                 {
                                     $like = App\Models\Like::where('id_user', auth()->user()->id)->get();
@@ -96,7 +99,7 @@
                             </div>
                             <div class="single-icon shopping-cart">
                                 <a href="{{ URL::to('/cart') }}"><i class="text-main fa fa-shopping-cart fa-2x"></i></a>
-                                <?php 
+                                <?php
                                 if(auth()->user())
                                 {
                                     $cart = App\Models\Cart::where('id_user', auth()->user()->id)->get();

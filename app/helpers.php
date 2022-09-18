@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Cart;
 use App\Models\FavoritModel;
 use App\Models\KategoriModel;
 use App\Models\Like;
@@ -9,16 +10,25 @@ use Illuminate\Support\Facades\URL;
 use phpDocumentor\Reflection\Types\Null_;
 use PhpParser\Node\Expr\FuncCall;
 
+use function PHPUnit\Framework\fileExists;
 use function PHPUnit\Framework\isNull;
 
-function count_pdf_pages($fileName) {
+function count_pdf_pages($fileName)
+{
     $path = public_path() . '/data/file_print/' . $fileName;
-    $pdf = file_get_contents($path);
-    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
-    return $number;
+    if (file_exists($path)) {
+        $pdf = file_get_contents($path);
+        $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
+        return $number;
+    } else {
+        $cart = Cart::where('file', $fileName)->first();
+
+        return 0;
+    }
 }
 
-function isLike($idUser, $idProduk){
+function isLike($idUser, $idProduk)
+{
     return Like::where('id_user', $idUser)->where('id_produk', $idProduk)->first();
 }
 

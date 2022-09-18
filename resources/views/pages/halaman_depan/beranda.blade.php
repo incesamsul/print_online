@@ -118,7 +118,8 @@
                     <div class="product-content">
                         <h3><a href="product-detail.html">{{ $row->nama_produk }}</a></h3>
                         <div class="product-price">
-                            <span>Rp. {{ number_format($row->harga_produk) }}</span>
+                            <p class="text-sm m-0">Rp. {{ number_format($row->harga_warna) }} (warna)</p>
+                            <p class="text-sm m-0">Rp. {{ number_format($row->harga_bw)}} (bw)</p>
                         </div>
                     </div>
                 </div>

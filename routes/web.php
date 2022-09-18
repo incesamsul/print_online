@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:user']], function () {
     Route::get('/detail_transaksi/{reference}', [TransaksiController::class, 'detailTransaksi']);
     Route::get('/my_account', [UserController::class, 'myAccount']);
     Route::get('/my_transaksi', [UserController::class, 'myTransaksi']);
+    Route::get('/hitung_total_pembayaran/{file}/{id_cart}', [UserController::class, 'hitungTotalPembayaran']);
 });
 
 
@@ -80,6 +81,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
 
         // CRUD PRODUK
         Route::post('/simpan_produk', [Admin::class, 'simpanProduk']);
+        Route::post('/ubah_produk', [Admin::class, 'ubahProduk']);
         Route::post('/delete_produk', [Admin::class, 'deleteProduk']);
 
         // CRUD PENGGUNA

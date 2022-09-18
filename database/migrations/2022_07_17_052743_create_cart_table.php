@@ -18,6 +18,8 @@ class CreateCartTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedInteger('id_produk');
             $table->string('file');
+            $table->integer('lbr_warna')->default(0);
+            $table->integer('lbr_bw')->default(0);
             $table->integer('total');
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_produk')->references('id_produk')->on('produk')->onUpdate('cascade')->onDelete('cascade');

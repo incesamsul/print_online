@@ -13,7 +13,7 @@
                             <option value="" selected>Filter</option>
                             <option value=""></option>
                         </select> --}}
-                        <button type="button" class="btn btn-dark float-right" data-toggle="modal" data-target="#produckModal"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn bg-main text-white float-right" data-toggle="modal" data-target="#produckModal"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -22,7 +22,8 @@
                             <tr>
                                 <th width="5%" class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">ID <span id="id_icon"></span></th>
                                 <th>Nama kategori</th>
-                                <th>Harga</th>
+                                <th>Harga warna</th>
+                                <th>Harga bw</th>
                                 <th>Deskripsi</th>
                                 <th>Kategori</th>
                                 <th>Action</th>
@@ -34,7 +35,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $row->nama_produk }}</td>
-                                    <td>Rp. {{ number_format($row->harga_produk) }}</td>
+                                    <td>Rp. {{ number_format($row->harga_warna) }}</td>
+                                    <td>Rp. {{ number_format($row->harga_bw) }}</td>
                                     <td>{{ $row->deskripsi }}</td>
                                     <td>{{ $row->kategori->nama_category }}</td>
                                     <td>
@@ -46,8 +48,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </i>
                                             <div class="dropdown-menu">
-                                                {{-- <a data-pengguna='@json($p)' data-toggle="modal" data-target="#modalPengguna" class="dropdown-item kaitkan" href="#"><i class="fas fa-link"> Kaitkan data</i></a> --}}
-                                                <a data-pengguna='@json($row)' data-toggle="modal" data-target="#modalPengguna" class="dropdown-item edit" href="#"><i class="fas fa-pen"> Edit</i></a>
+                                                <a data-edit='@json($row)' data-toggle="modal" data-target="#produckModal"class="dropdown-item edit" href="#"><i class="fas fa-pen"> Edit</i></a>
                                                 <a data-id_produk="{{ $row->id_produk }}" class="dropdown-item hapus" href="#"><i class="fas fa-trash"> Hapus</i></a>
                                             </div>
                                         </div>
@@ -77,19 +78,24 @@
           </button>
         </div>
         <div class="modal-body">
-            <form method="POST" action="{{ URL::to('/admin/simpan_produk') }}" enctype="multipart/form-data">
+            <form id="formProduk" method="POST" action="{{ URL::to('/admin/simpan_produk') }}" enctype="multipart/form-data">
                 @csrf
           <div class="form-group">
               <label for="nama_produk">nama produk</label>
-              <input type="text" class="form-control" name="nama_produk">
+              <input type="hidden" class="form-control" name="id" id="id">
+              <input type="text" class="form-control" name="nama_produk" id="nama_produk">
             </div>
             <div class="form-group">
-              <label for="harga_produk">harga produk</label>
-              <input type="text" class="form-control" name="harga_produk">
+              <label for="harga_warna">harga warna</label>
+              <input type="text" class="form-control" name="harga_warna" id="harga_warna">
+          </div>
+            <div class="form-group">
+              <label for="harga_bw">harga bw</label>
+              <input type="text" class="form-control" name="harga_bw" id="harga_bw">
           </div>
             <div class="form-group">
               <label for="deskripsi">deskripsi produk</label>
-              <textarea class="form-control" name="deskripsi"></textarea>
+              <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
           </div>
             <div class="form-group">
               <label for="kategori">kategori produk</label>
@@ -104,7 +110,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-dark">Simpan</button>
+          <button type="submit" class="btn bg-main text-white">Simpan</button>
         </form>
         </div>
       </div>
@@ -137,9 +143,14 @@
                     <td id="kategori_produk"></td>
                 </tr>
                 <tr>
-                    <td>Harga produk</td>
+                    <td>Harga warna</td>
                     <td>:</td>
-                    <td id="harga_produk"></td>
+                    <td id="harga_warna"></td>
+                </tr>
+                <tr>
+                    <td>Harga bw</td>
+                    <td>:</td>
+                    <td id="harga_bw"></td>
                 </tr>
                 <tr>
                     <td>Deskripsi produk</td>
@@ -166,7 +177,8 @@
             $('#modalDetail #nama_produk').html(dataDetail.nama_produk);
             $('#modalDetail #gambar_produk').attr('src',gambarProduk);
             $('#modalDetail #kategori_produk').html(dataDetail.kategori.nama_category);
-            $('#modalDetail #harga_produk').html(dataDetail.harga_produk);
+            $('#modalDetail #harga_warna').html(dataDetail.harga_warna);
+            $('#modalDetail #harga_bw').html(dataDetail.harga_bw);
             $('#modalDetail #deskripsi').html(dataDetail.deskripsi);
         })
 
@@ -207,6 +219,22 @@
                     })
                 }
             })
+        });
+
+        $('#btn-tambah').on('click',function(){
+            $('#formProduk').attr('action','/admin/simpan_produk');
+        })
+
+        // TOMBOL EDIT USER
+        $('.table-produk tbody').on('click', 'tr td a.edit', function() {
+            let edit = $(this).data('edit');
+            console.log(edit);
+            $('#id').val(edit.id_produk)
+            $('#nama_produk').val(edit.nama_produk)
+            $('#harga_warna').val(edit.harga_warna)
+            $('#harga_bw').val(edit.harga_bw)
+            $('#deskripsi').val(edit.deskripsi)
+            $('#formProduk').attr('action','/admin/ubah_produk');
         });
 
 

@@ -36,7 +36,8 @@
                     <h2 class="product-name">{{ $detail_produk->nama_produk }}</h2>
                     <div class="product-price">
                         {{-- <span class="price">IDR 299.000</span><span class="price-muted">IDR 499.000</span> --}}
-                        <span class="price">Rp. {{ number_format($detail_produk->harga_produk) }}</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
+                        <span class="price">Rp. {{ number_format($detail_produk->harga_warna) }} (warna)</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
+                        <span class="price">Rp. {{ number_format($detail_produk->harga_bw) }}(bw)</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
                     </div>
                     <div class="product-short-desc">
                         <p>{{ $detail_produk->deskripsi }}
@@ -47,7 +48,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-3">
-                                    <input required type="file" class="form-control" name="file"/>
+                                    <input accept="application/pdf" required type="file" class="form-control" name="file"/>
                                 </div>
                                 <div class="col-md-5">
                                     <button type="submit" class="btn bg-main text-white btn-block">Add to Cart</button>
@@ -56,7 +57,7 @@
                                     @if (auth()->user())
                                     @if (isLike(auth()->user()->id, $detail_produk->id_produk))
                                     <a href="{{ URL::to('/unlike/' . $detail_produk->id_produk) }}" class="btn btn-secondary"><i class="fa fa-heart text-danger"></i></a>
-                                    @else    
+                                    @else
                                     <a href="{{ URL::to('/like/' . $detail_produk->id_produk) }}" class="btn btn-secondary"><i class="fa fa-heart-o"></i></a>
                                     @endif
                                     @endif
@@ -161,7 +162,8 @@
                     <div class="product-content">
                         <h3><a href="product-detail.html">{{ $row->nama_produk }}</a></h3>
                         <div class="product-price">
-                            <span>Rp. {{ number_format($row->harga_produk) }}</span>
+                            <p class="text-sm m-0">Rp. {{ number_format($row->harga_warna) }} (warna)</p>
+                            <p class="text-sm m-0">Rp. {{ number_format($row->harga_bw)}} (bw)</p>
                         </div>
                     </div>
                 </div>
