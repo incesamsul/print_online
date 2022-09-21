@@ -22,6 +22,9 @@
                     <p>{{ $detail_transaksi->customer_name }}</p>
                     <p>{{ $detail_transaksi->customer_email }}</p>
                     <p>Biaya merchant : Rp. {{ number_format($detail_transaksi->fee_merchant) }}</p>
+                    @if ($detail_transaksi->payment_name == 'QRIS')
+                    <p><img src="{{ $detail_transaksi->qr_url }}" alt=""></p>
+                    @endif
                 </div>
             </div>
             <div class="col-sm-4">
