@@ -40,6 +40,17 @@
             <li class="" id="liProduk"><a class="nav-link" href="{{ URL::to('/admin/produk') }}"><i
                 class="fas fa-cubes"></i> <span>Produk</span></a></li>
 
+
+            <li class="nav-item dropdown " id="liPrintList">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i>
+                    <span>Print list</span></a>
+                <ul class="dropdown-menu">
+                    <?php $produk = new \App\Models\ProdukModel ?>
+                    @foreach ($produk::all() as $row)
+                    <li id="liPrint"><a class="nav-link" href="/admin/list_print/{{ $row->id_produk }}">{{ $row->nama_produk }}</a></li>
+                    @endforeach
+                </ul>
+            </li>
             {{-- END OF MENU ADMIN --}}
             @endif
 

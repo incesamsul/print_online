@@ -20,7 +20,7 @@
                     <table class="table table-striped">
                         <tr>
                             <th>Product</th>
-                            <th>Harga</th>
+                            {{-- <th>Harga</th> --}}
                             <th>File</th>
                             <th>warna</th>
                             <th>bw</th>
@@ -38,7 +38,7 @@
                                         <img class="mr-4" src="{{ asset('data/gambar_produk/' . $row->produk->gambar_produk) }}" width="100">
                                         {{ $row->produk->nama_produk }}
                                     </td>
-                                    <td class="align-middle">Rp. {{ number_format($row->produk->harga_produk) }}</td>
+                                    {{-- <td class="align-middle">Rp. {{ number_format($row->produk->harga_produk) }}</td> --}}
                                     <td class="align-middle">
                                         <a data-path="{{ asset('data/file_print/' . $row->file)}}"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a>
                                     </td>
@@ -82,12 +82,12 @@
                     <h2>Cart total</h2>
                     <table class="table">
                         <tr>
-                            <th>(bw){{ $row->lbr_bw }} x {{ 'Rp. ' . number_format($row->produk->harga_bw) }}</th>
-                            <th>{{ number_format($row->lbr_bw * $row->produk->harga_bw) }}</th>
+                            <th>(bw){{ count($cart) > 0 ? $row->lbr_bw : '' }} x Rp. {{  count($cart) > 0 ? number_format($row->produk->harga_bw) : '' }}</th>
+                            <th>{{ count($cart) > 0 ? number_format($row->lbr_bw * $row->produk->harga_bw) : '' }}</th>
                         </tr>
                         <tr>
-                            <th>(warna){{ $row->lbr_warna }} x {{ 'Rp. ' . number_format($row->produk->harga_warna) }}</th>
-                            <th>{{ number_format($row->lbr_warna * $row->produk->harga_warna) }}</th>
+                            <th>(warna){{ count($cart) > 0 ? $row->lbr_warna  : ''}} x Rp. {{ count($cart) > 0 ? number_format($row->produk->harga_warna) : '' }}</th>
+                            <th>{{ count($cart) > 0 ? number_format($row->lbr_warna * $row->produk->harga_warna) : '' }}</th>
                         </tr>
                         <tr>
                             <th>Sub total</th>

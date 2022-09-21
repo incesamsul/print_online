@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\CategoryModel;
 use App\Models\ProdukModel;
 use App\Models\Transaksi;
@@ -48,6 +49,23 @@ class Admin extends Controller
     {
         $data['produk'] = ProdukModel::all();
         return view('pages.produk.index', $data);
+    }
+
+    public function listPrint($idProduk)
+    {
+        $data['print'] = Transaksi::where('status', 'paid')->first();
+        $data['print'] = Transaksi::with(['cart' => function ($query) {
+            $query->where('status_print', 'antri');
+        }])->first();
+        return view('pages.list_print.index', $data);
+    }
+
+    public function updatePrintStatus($idCart)
+    {
+        Cart::where('id_cart', $idCart)->update([
+            'status_print' => 'proses',
+        ]);
+        return redirect()->back()->with('message', 'file ada sedang dalam proses print');
     }
 
     public function detailProduk($id_produk = null)

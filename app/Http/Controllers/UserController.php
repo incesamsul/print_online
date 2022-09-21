@@ -17,6 +17,20 @@ class UserController extends Controller
         return view('pages.halaman_depan.my_account');
     }
 
+    public function myPrint()
+    {
+        $data['print'] = Transaksi::where('id_user', auth()->user()->id)->where('status', 'paid')->get();
+        return view('pages.halaman_depan.my_print', $data);
+    }
+
+    public function print($idCart)
+    {
+        Cart::where('id_cart', $idCart)->update([
+            'status_print' => 'antri',
+        ]);
+        return redirect()->back()->with('message', 'print masuk ke antrian');
+    }
+
     public function myTransaksi()
     {
         $data['transaksi'] = Transaksi::where('id_user', auth()->user()->id)->get();

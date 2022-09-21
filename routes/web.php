@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:user']], function () {
     Route::post('/transaksi', [TransaksiController::class, 'store']);
     Route::get('/detail_transaksi/{reference}', [TransaksiController::class, 'detailTransaksi']);
     Route::get('/my_account', [UserController::class, 'myAccount']);
+    Route::get('/my_print', [UserController::class, 'myPrint']);
+    Route::get('/print/{id_cart}', [UserController::class, 'print']);
     Route::get('/my_transaksi', [UserController::class, 'myTransaksi']);
     Route::get('/hitung_total_pembayaran/{file}/{id_cart}', [UserController::class, 'hitungTotalPembayaran']);
 });
@@ -78,6 +80,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
         Route::get('/kategori', [Admin::class, 'kategori']);
         Route::get('/transaksi', [Admin::class, 'transaksi']);
         Route::get('/produk', [Admin::class, 'produk']);
+        Route::get('/list_print/{id_produk}', [Admin::class, 'listPrint']);
+        Route::get('/update_print_status/{id_cart}', [Admin::class, 'updatePrintStatus']);
 
         // CRUD PRODUK
         Route::post('/simpan_produk', [Admin::class, 'simpanProduk']);
