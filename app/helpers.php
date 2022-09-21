@@ -15,14 +15,13 @@ use function PHPUnit\Framework\isNull;
 
 function count_pdf_pages($fileName)
 {
+
     $path = public_path() . '/data/file_print/' . $fileName;
     if (file_exists($path)) {
         $pdf = file_get_contents($path);
         $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
         return $number;
     } else {
-        $cart = Cart::where('file', $fileName)->first();
-
         return 0;
     }
 }

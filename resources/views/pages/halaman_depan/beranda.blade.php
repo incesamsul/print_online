@@ -54,7 +54,7 @@
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="media">
                     <div class="iconbox iconmedium rounded-circle text-info mr-4">
                         <i class="fa fa-truck"></i>
@@ -66,7 +66,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-4">
                 <div class="media">
                     <div class="iconbox iconmedium rounded-circle text-purple mr-4">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="media">
                     <div class="iconbox iconmedium rounded-circle text-warning mr-4">
                         <i class="fa fa-refresh"></i>
@@ -92,7 +92,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

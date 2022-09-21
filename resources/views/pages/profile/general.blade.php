@@ -110,9 +110,9 @@
                                         <td>{{ $user->no_telp }}</td>
                                     </tr>
                                 </table>
-                                <div class="alert alert-info">silahkan hubungi admin jika terdapat kesalahan data</div>
+                                {{-- <div class="alert alert-info">silahkan hubungi admin jika terdapat kesalahan data</div> --}}
                                 @else
-                                <div class="alert alert-warning">Belum ada data user, untuk lebih lanjut hubungi admin</div>
+                                {{-- <div class="alert alert-warning">Belum ada data user, untuk lebih lanjut hubungi admin</div> --}}
                                 @endif
                             </div>
                         </li>

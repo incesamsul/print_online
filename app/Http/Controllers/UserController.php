@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Like;
+use App\Models\PrintList;
 use App\Models\ProdukModel;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -23,9 +24,9 @@ class UserController extends Controller
         return view('pages.halaman_depan.my_print', $data);
     }
 
-    public function print($idCart)
+    public function print($idPrintList)
     {
-        Cart::where('id_cart', $idCart)->update([
+        PrintList::where('id_print_list', $idPrintList)->update([
             'status_print' => 'antri',
         ]);
         return redirect()->back()->with('message', 'print masuk ke antrian');

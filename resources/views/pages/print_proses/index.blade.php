@@ -22,7 +22,8 @@
                         <tr>
                             <th>Product</th>
                             <th>Nama costumer</th>
-                            <th>File</th>
+                            <th>Status print</th>
+                            <th>Progress bar</th>
                         </tr>
                         </thead>
                         <tbody id="tbody-antrian">
@@ -36,21 +37,7 @@
         </div>
     </div>
 </section>
-<div class="modal fade" id="previewFile" tabindex="-1" aria-labelledby="previewFileLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewFileLabel">Preview file</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <iframe id="iframe-preview" style="width: 100%;height:100vh;" src="" frameborder="0"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 @endsection
 @section('script')
@@ -84,36 +71,38 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            , url: '/admin/get_data_antrian'
-            , dataType: 'json'
+            , url: '/admin/get_data_proses'
+            // , dataType: 'json'
             , success: function(data) {
                 console.log('u do it');
-                if(data.print == null){
+                if(data.response == null){
                     $('#tbody-antrian').html('<tr><td colspan="4" class="text-center">tdk ada antrian print</td></tr>');
                     setTimeout ( function(){ reqAntri( param ) }, $.ajaxSetup().retryAfter );
                 } else {
                     console.log(data);
                     let basePath = "{{ asset('data/file_print/' )}}";
-                    let pathPrint = basePath + '/' + data.print.file;
 
                     let tableHTML = '';
                         tableHTML += '<tr>';
-                        tableHTML += '<td>' + data.print.produk.nama_produk + '</td>';
-                        tableHTML += '<td>' + data.user.name + '</td>';
-                        tableHTML += '<td class="align-middle"><a data-path="' + pathPrint + '"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a></td>';
+                        tableHTML += '<td>' + data.response.produk.nama_produk + '</td>';
+                        tableHTML += '<td>' + data.response.user.name + '</td>';
+                        tableHTML += '<td><span class="badge badge-primary">' + data.response.status_print + '</span></td>';
+                        tableHTML += '<td><progress value="0" max="' + data.halaman + '" id="progressBar"></progress></td>';
                         tableHTML += '</tr>';
                     $('#tbody-antrian').html(tableHTML);
 
-                    printPdf(pathPrint);
-                    setTimeout(() => {
-                        window.location.href = '/admin/update_print_status/' + data.print.id_print_list;
-                    }, 10000);
+                    var maxTime = data.halaman;
+                    var timeleft = data.halaman;
+                    var downloadTimer = setInterval(function(){
+                    if(timeleft <= 0){
+                        clearInterval(downloadTimer);
+                        window.location.href = '/admin/update_print_status_selesai/' + data.response.id_print_list;
+                    }
 
-                    $('.btn-preview').on('click', function() {
-                        let path = $(this).data('path');
-                        console.log(path);
-                        $('#iframe-preview').attr('src',path);
-                    })
+                    document.getElementById("progressBar").value = data.halaman - timeleft;
+                    timeleft -= 1;
+                    }, 1000);
+
 
                 }
             }
@@ -125,7 +114,7 @@
     reqAntri();
 
 
-    $('#liPrintList').addClass('active');
+    $('#liPrintProses').addClass('active');
     $('#liPrint').addClass('active');
 
 </script>

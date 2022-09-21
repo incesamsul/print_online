@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CategoryModel;
+use App\Models\PrintList;
 use App\Models\ProdukModel;
 use App\Models\Transaksi;
 use App\Models\User;
@@ -53,19 +54,54 @@ class Admin extends Controller
 
     public function listPrint($idProduk)
     {
-        $data['print'] = Transaksi::where('status', 'paid')->first();
-        $data['print'] = Transaksi::with(['cart' => function ($query) {
-            $query->where('status_print', 'antri');
-        }])->first();
+        $data = [];
         return view('pages.list_print.index', $data);
     }
 
-    public function updatePrintStatus($idCart)
+    public function printProses($idProduk)
     {
-        Cart::where('id_cart', $idCart)->update([
+        $data['print'] = PrintList::where('status_print', 'proses')->first();
+        return view('pages.print_proses.index', $data);
+    }
+
+    public function printSelesai($idProduk)
+    {
+        $data['print'] = PrintList::where('status_print', 'selesai')->get();
+        return view('pages.print_selesai.index', $data);
+    }
+
+    public function getDataAntrian()
+    {
+        return Transaksi::with(['print' => function ($query) {
+            $query->where('status_print', 'antri')->with('produk');
+        }])->with('user')->first();
+    }
+
+    public function getDataProses()
+    {
+        $print = PrintList::where('status_print', 'proses')->with('produk')->with('user')->first();
+        $jmlHalaman = $print ? count_pdf_pages($print->file) : 0;
+        return response([
+            'halaman' => $jmlHalaman,
+            'response' => $print
+        ], 200);
+    }
+
+    public function updatePrintStatus($idPrintList)
+    {
+        PrintList::where('id_print_list', $idPrintList)->update([
             'status_print' => 'proses',
         ]);
-        return redirect()->back()->with('message', 'file ada sedang dalam proses print');
+        return redirect()->back();
+    }
+
+
+    public function updatePrintStatusSelesai($idPrintList)
+    {
+        PrintList::where('id_print_list', $idPrintList)->update([
+            'status_print' => 'selesai',
+        ]);
+        return redirect()->back();
     }
 
     public function detailProduk($id_produk = null)

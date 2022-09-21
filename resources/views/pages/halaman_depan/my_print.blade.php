@@ -27,28 +27,28 @@
                         @foreach ($print as $id=>$row)
                             <tr>
                                 <td>
-                                    <img class="mr-4" src="{{ asset('data/gambar_produk/' . $row->cart->produk->gambar_produk) }}" width="100">
-                                    {{ $row->cart->produk->nama_produk }}
+                                    <img class="mr-4" src="{{ asset('data/gambar_produk/' . $row->print->produk->gambar_produk) }}" width="100">
+                                    {{ $row->print->produk->nama_produk }}
                                 </td>
                                 <td class="align-middle">
-                                    <a data-path="{{ asset('data/file_print/' . $row->cart->file)}}"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a>
+                                    <a data-path="{{ asset('data/file_print/' . $row->print->file)}}"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a>
                                 </td>
                                 <td class="align-middle">
-                                    @if ($row->cart->status_print == 'ready')
+                                    @if ($row->print->status_print == 'ready')
                                         <span class="badge badge-warning">ready</span>
-                                        @elseif ($row->cart->status_print == 'antri')
+                                        @elseif ($row->print->status_print == 'antri')
                                         <span class="badge badge-primary">antri</span>
-                                        @elseif ($row->cart->status_print == 'proses')
-                                        <span class="badge badge-secondary">antri</span>
-                                        @elseif ($row->cart->status_print == 'selesai')
+                                        @elseif ($row->print->status_print == 'proses')
+                                        <span class="badge badge-secondary">proses</span>
+                                        @elseif ($row->print->status_print == 'selesai')
                                         <span class="badge badge-success">selesai</span>
                                         @else
                                         <span class="badge badge-success">none</span>
                                     @endif
                                 </td>
                                 <td class="align-middle">
-                                    @if ($row->cart->status_print == 'ready')
-                                    <a href="{{ URL::to('/print/' . $row->id_cart) }}" class="btn bg-main text-white">Print</a>
+                                    @if ($row->print->status_print == 'ready')
+                                    <a href="{{ URL::to('/print/' . $row->id_print_list) }}" class="btn bg-main text-white">Print</a>
                                     @else
                                     <a href="#" class="btn btn-secondary" >Print</a>
                                     @endif

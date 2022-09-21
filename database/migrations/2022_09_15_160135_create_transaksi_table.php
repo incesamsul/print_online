@@ -16,14 +16,14 @@ class CreateTransaksiTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id_transaksi');
             $table->unsignedBigInteger('id_user');
-            $table->unsignedInteger('id_cart');
+            $table->unsignedInteger('id_print_list');
             $table->integer('total_amount');
             $table->string('reference');
             $table->string('merchant_reference');
             $table->enum('status', ['paid', 'unpaid'])->default('unpaid');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_cart')->references('id_cart')->on('cart')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_print_list')->references('id_print_list')->on('print_list')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -51,6 +51,28 @@
                     @endforeach
                 </ul>
             </li>
+
+            <li class="nav-item dropdown " id="liPrintProses">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i>
+                    <span>Print Proses</span></a>
+                <ul class="dropdown-menu">
+                    <?php $produk = new \App\Models\ProdukModel ?>
+                    @foreach ($produk::all() as $row)
+                    <li id="liPrint"><a class="nav-link" href="/admin/print_proses/{{ $row->id_produk }}">{{ $row->nama_produk }}</a></li>
+                    @endforeach
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown " id="liPrintSelesai">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i>
+                    <span>Print Selesai</span></a>
+                <ul class="dropdown-menu">
+                    <?php $produk = new \App\Models\ProdukModel ?>
+                    @foreach ($produk::all() as $row)
+                    <li id="liPrint"><a class="nav-link" href="/admin/print_selesai/{{ $row->id_produk }}">{{ $row->nama_produk }}</a></li>
+                    @endforeach
+                </ul>
+            </li>
             {{-- END OF MENU ADMIN --}}
             @endif
 

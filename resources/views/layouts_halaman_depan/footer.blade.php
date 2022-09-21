@@ -20,7 +20,7 @@
                     <div class="single-footer links">
                         <h4>Information</h4>
                         <ul>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Tentang kami</a></li>
                             <li><a href="#">Faq</a></li>
                             <li><a href="#">Terms &amp; Conditions</a></li>
                             <li><a href="#">Contact Us</a></li>
@@ -35,8 +35,6 @@
                         <h4>Services</h4>
                         <ul>
                             <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back</a></li>
-                            <li><a href="#">Returns</a></li>
                             <li><a href="#">Shipping</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                         </ul>
@@ -50,7 +48,7 @@
                         <!-- Single Widget -->
                         <div class="contact">
                             <ul>
-                                <li>Makassar.</li>
+                                <li>Maros.</li>
                                 <li>indonesia.</li>
                                 <li>info@mail.com</li>
                                 <li>+032 3456 7890</li>

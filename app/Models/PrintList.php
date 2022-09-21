@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
-class Transaksi extends Model
+class PrintList extends Model
 {
     use HasFactory;
 
-    protected $table = 'transaksi';
-    protected $guarded = ['id_transaksi'];
+    protected $table = 'print_list';
+    protected $guarded = ['id_print_list'];
 
-    public function print()
+    public function produk()
     {
-        return $this->belongsTo(PrintList::class, 'id_print_list', 'id_print_list');
+        return $this->belongsTo(ProdukModel::class, 'id_produk', 'id_produk');
     }
 
     public function user()
