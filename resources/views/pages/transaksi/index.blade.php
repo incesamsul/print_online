@@ -35,7 +35,7 @@
                                         <img  src="{{ $row->foto == "" ? asset('stisla/assets/img/avatar/avatar-1.png') : asset('data/foto_profile/'.$row->foto . '/'. $row->foto) }}" alt="" class="rounded-circle-profile mb-2" width="100">
                                         {{ $row->user->name }}
                                     </td>
-                                    <td>{{ $row->cart->produk->nama_produk }}</td>
+                                    <td>{{ $row->print->produk->nama_produk }}</td>
                                     <td>Rp. {{ number_format($row->total_amount) }}</td>
                                     <td>
                                         @if ($row->status == 'paid')

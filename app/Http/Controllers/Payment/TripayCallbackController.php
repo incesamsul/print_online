@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use App\Models\transaksi;
+use App\Models\Transaksi;
 use App\Http\Controllers\Controller;
 
 

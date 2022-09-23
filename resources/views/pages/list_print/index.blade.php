@@ -88,25 +88,26 @@
             , dataType: 'json'
             , success: function(data) {
                 console.log('u do it');
-                if(data.print == null){
+                console.log(data);
+                if(data.response == null){
                     $('#tbody-antrian').html('<tr><td colspan="4" class="text-center">tdk ada antrian print</td></tr>');
                     setTimeout ( function(){ reqAntri( param ) }, $.ajaxSetup().retryAfter );
                 } else {
                     console.log(data);
                     let basePath = "{{ asset('data/file_print/' )}}";
-                    let pathPrint = basePath + '/' + data.print.file;
+                    let pathPrint = basePath + '/' + data.response.file;
 
                     let tableHTML = '';
                         tableHTML += '<tr>';
-                        tableHTML += '<td>' + data.print.produk.nama_produk + '</td>';
-                        tableHTML += '<td>' + data.user.name + '</td>';
+                        tableHTML += '<td>' + data.response.produk.nama_produk + '</td>';
+                        tableHTML += '<td>' + data.response.user.name + '</td>';
                         tableHTML += '<td class="align-middle"><a data-path="' + pathPrint + '"class="btn bg-main btn-preview text-white" data-toggle="modal" data-target="#previewFile">lihat</a></td>';
                         tableHTML += '</tr>';
                     $('#tbody-antrian').html(tableHTML);
 
                     printPdf(pathPrint);
                     setTimeout(() => {
-                        window.location.href = '/admin/update_print_status/' + data.print.id_print_list;
+                        window.location.href = '/admin/update_print_status/' + data.response.id_print_list;
                     }, 10000);
 
                     $('.btn-preview').on('click', function() {

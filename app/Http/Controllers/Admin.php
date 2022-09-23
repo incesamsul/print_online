@@ -72,9 +72,9 @@ class Admin extends Controller
 
     public function getDataAntrian()
     {
-        return Transaksi::with(['print' => function ($query) {
-            $query->where('status_print', 'antri')->with('produk');
-        }])->with('user')->first();
+        return response([
+            'response' => PrintList::where('status_print', 'antri')->with('produk')->with('user')->first()
+        ], 200);
     }
 
     public function getDataProses()
