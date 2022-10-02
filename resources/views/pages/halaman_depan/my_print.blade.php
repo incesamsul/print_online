@@ -4,8 +4,8 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">My Print</a></li>
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Print</a></li>
         </ol>
     </div>
 </section>
@@ -15,10 +15,12 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="section-title table-responsive">
-                    <h2>Print list</h2>
+                    <h2>Print saya</h2>
                     <table class="table table-striped">
                         <tr>
-                            <th>Product</th>
+                            <th>Produk
+
+                            </th>
                             {{-- <th>Harga</th> --}}
                             <th>File</th>
                             <th>Status print</th>
@@ -60,7 +62,7 @@
             </div>
             <div class="col-sm-4">
               <div class="section-title">
-                  <h2>User menu</h2>
+                  <h2>Menu pengguna</h2>
                   @include('components.user_menu')
               </div>
           </div>

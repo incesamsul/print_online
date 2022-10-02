@@ -6,14 +6,77 @@
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-dark bg-main">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Transaksi </h4>
+                    </div>
+                    <div class="card-body">
+                        {{ count($transaksi) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-dark bg-main">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Antrian print</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ count($antri) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-dark bg-main">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Print di proses</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ count($proses) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-dark bg-main">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Print selesai </h4>
+                    </div>
+                    <div class="card-body">
+                        {{ count($selesai) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-dark bg-main">
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total </h4>
+                        <h4>Jumlah pengguna</h4>
                     </div>
                     <div class="card-body">
-                        59
+                        {{ count($pengguna) }}
                     </div>
                 </div>
             </div>
@@ -21,29 +84,14 @@
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-dark bg-main">
-                    <i class="fas fa-calendar-day"></i>
+                    <i class="fas fa-spinner"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Hari dan tanggal sekarang</h4>
+                        <h4>Total pemasukan</h4>
                     </div>
                     <div class="card-body">
-                        <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card card-statistic-2">
-                <div class="card-icon shadow-dark bg-main">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Waktu sekarang</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-small mt-3">{{ date('H:i:s') }}</p>
+                        Rp. {{ number_format($total_pemasukan) }}
                     </div>
                 </div>
             </div>
@@ -62,9 +110,6 @@
                 </div>
                 <div class="card-body">
                     <h5>Hi, Selamat datang</h5>
-                    <p>Segala aktifitas yang anda lakukan akan kami pantau, mhon gunakan aplikasi ini dengan bijaksana.
-                    </p>
-                    <p>Dengan adanya apilkasi ini kami berharap agar mempermudah Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quibusdam quia rem ab, aspernatur nisi asperiores laudantium repellendus, optio ad sequi! Blanditiis quo, rerum eligendi maiores dicta ipsum iure! Inventore!lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam aliquid fuga ea expedita culpa praesentium provident magnam. Iste, illum! Nesciunt ullam itaque ratione asperiores eaque corporis minima, recusandae quo eligendi!</p>
                 </div>
             </div>
         </div>

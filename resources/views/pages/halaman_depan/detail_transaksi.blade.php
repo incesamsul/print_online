@@ -4,9 +4,9 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Products</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Produk</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detail transaksi</li>
         </ol>
     </div>
 </section>
@@ -18,10 +18,9 @@
                 <div class="section-title table-responsive">
                     <h2>Detail Transaksi</h2>
                     <p>Ref No. #{{ $detail_transaksi->reference }}</p>
-                    <h1>Total : Rp. {{ number_format($detail_transaksi->amount + $detail_transaksi->fee_merchant) }}</h1>
+                    <h1>Total : Rp. {{ number_format($detail_transaksi->amount) }}</h1>
                     <p>{{ $detail_transaksi->customer_name }}</p>
                     <p>{{ $detail_transaksi->customer_email }}</p>
-                    <p>Biaya merchant : Rp. {{ number_format($detail_transaksi->fee_merchant) }}</p>
                     @if ($detail_transaksi->payment_name == 'QRIS')
                     <p><img src="{{ $detail_transaksi->qr_url }}" alt=""></p>
                     @endif

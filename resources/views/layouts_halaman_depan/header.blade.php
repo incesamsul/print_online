@@ -43,14 +43,14 @@
                 <div class="row">
                     <div class="col-6 text-left">
                         <ul class="top-links contact-info">
-                            <li><i class="fa fa-envelope-o"></i> <a href="#">printotomatis@gmail.com</a></li>
-                            <li><i class="fa fa-whatsapp"></i> +6281 234 54334</li>
+                            <li><i class="fa fa-envelope-o"></i> <a href="#">memangprint@gmail.com</a></li>
+                            <li><i class="fa fa-whatsapp"></i> + 082393388147</li>
                         </ul>
                     </div>
                     <div class="col-6 text-right">
                         <ul class="top-links account-links">
                             @if (auth()->user())
-                            <li><i class="fa fa-user-circle-o"></i> <a href="{{ URL::to('/my_account') }}">My Account</a></li>
+                            <li><i class="fa fa-user-circle-o"></i> <a href="{{ URL::to('/my_account') }}">Akun saya</a></li>
                             <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/logout') }}">Logout</a></li>
                             @else
                             <li><i class="fa fa-power-off"></i> <a href="{{ URL::to('/login') }}">Login</a></li>
@@ -72,7 +72,7 @@
                     <div class="col-lg-7 col-12 col-sm-6">
                         <form action="#" class="search">
                             <div class="input-group w-100">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="Cari..">
                                 <div class="input-group-append">
                                     <button class="btn bg-main text-white" type="submit">
                                         <i class="fa fa-search"></i>
@@ -127,18 +127,27 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ URL::to('/') }}">Home</a>
+                            <a class="nav-link" href="{{ URL::to('/') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::to('/about_us') }}">About</a>
+                            <a class="nav-link" href="{{ URL::to('/cart') }}">Keranjang</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                                aria-expanded="true">Pages</a>
+                                aria-expanded="true">Pemesanan</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ URL::to('/cart') }}">Cart</a>
+                                <?php
+                                    $produk = App\Models\ProdukModel::all();
+                                ?>
+                                @foreach($produk as $row)
+                                <a class="dropdown-item" href="{{ URL::to('/detail/' . $row->id_produk) }}">
+                                    {{ $row->nama_produk }}
+                                </a>
+
+                                @endforeach
+                                <!-- <a class="dropdown-item" href="{{ URL::to('/cart') }}">Cart</a>
                                 <a class="dropdown-item" href="{{ URL::to('/my_account') }}">My Account</a>
-                                <a class="dropdown-item" href="{{ URL::to('/logout') }}">Logout</a>
+                                <a class="dropdown-item" href="{{ URL::to('/logout') }}">Logout</a> -->
                             </div>
                         </li>
                     </ul>

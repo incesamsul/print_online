@@ -4,9 +4,9 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Products</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Produk</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
     </div>
 </section>
@@ -37,7 +37,7 @@
                     <div class="product-price">
                         {{-- <span class="price">IDR 299.000</span><span class="price-muted">IDR 499.000</span> --}}
                         <span class="price">Rp. {{ number_format($detail_produk->harga_warna) }} (warna)</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
-                        <span class="price">Rp. {{ number_format($detail_produk->harga_bw) }}(bw)</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
+                        <span class="price">Rp. {{ number_format($detail_produk->harga_bw) }}(hitam putih)</span><span class="price-muted">IDR {{ number_format($detail_produk->harga_produk) }}</span>
                     </div>
                     <div class="product-short-desc">
                         <p>{{ $detail_produk->deskripsi }}
@@ -51,7 +51,7 @@
                                     <input accept="application/pdf" required type="file" class="form-control" name="file"/>
                                 </div>
                                 <div class="col-md-5">
-                                    <button type="submit" class="btn bg-main text-white btn-block">Add to Cart</button>
+                                    <button type="submit" class="btn bg-main text-white btn-block">Tambah ke keranjang</button>
                                 </div>
                                 <div class="col-md-4">
                                     @if (auth()->user())
@@ -67,7 +67,7 @@
                     </div>
                     <div class="product-categories">
                         <ul>
-                            <li class="categories-title">Categories :</li>
+                            <li class="categories-title">kategori :</li>
                             <li><a href="#">{{ $detail_produk->kategori->nama_category }}</a></li>
                             {{-- <li><a href="#">fashion</a></li>
                             <li><a href="#">electronics</a></li>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="product-share">
                         <ul>
-                            <li class="categories-title">Share :</li>
+                            <li class="categories-title">Bagikan :</li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
@@ -104,10 +104,10 @@
                     <div class="nav-wrapper">
                         <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">Description</a>
+                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">Deskripsi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false">Reviews</a>
+                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false">Ulasan</a>
                             </li>
                         </ul>
                     </div>
@@ -146,7 +146,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Related Products</h2>
+                    <h2>Produk serupa</h2>
                 </div>
             </div>
         </div>

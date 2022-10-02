@@ -8,35 +8,19 @@
                         <div class="logo-footer">
                             <i class="fa fa-shopping-bag fa-3x"></i> <span class="logo ">print online</span>
                         </div>
-                        <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
-                            eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                            facilisis luctus, metus.</p>
-                        <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789"> +62819 7735 4535</a></span></p>
+                        <p class="text">Print hanya dengan menekan satu tombol tanpa harus keluar rumah.</p>
+                        <p class="call">Pertanyaan? Hubungi kami 24/7<span><a href="tel:123456789"> + 082393388147</a></span></p>
                     </div>
                     <!-- End Single Widget -->
                 </div>
+                
                 <div class="col-lg-2 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer links">
-                        <h4>Information</h4>
+                        <h4>Layanan</h4>
                         <ul>
-                            <li><a href="#">Tentang kami</a></li>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Single Widget -->
-                </div>
-                <div class="col-lg-2 col-md-6 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer links">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Metode pembayaran</a></li>
+                            <li><a href="#">Print online</a></li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
@@ -44,7 +28,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer social">
-                        <h4>Get In Touch</h4>
+                        <h4>Hubungi kami</h4>
                         <!-- Single Widget -->
                         <div class="contact">
                             <ul>

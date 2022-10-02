@@ -4,8 +4,8 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Transaksiku</a></li>
+            <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Transaksi saya</a></li>
         </ol>
     </div>
 </section>
@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-4">
               <div class="section-title">
-                  <h2>User menu</h2>
+                  <h2>Menu pengguna</h2>
                   @include('components.user_menu')
               </div>
           </div>

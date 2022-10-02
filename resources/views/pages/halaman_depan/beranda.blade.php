@@ -102,7 +102,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Daftar Layangan </h2>
+                    <h2>Daftar Layanan </h2>
                 </div>
             </div>
         </div>

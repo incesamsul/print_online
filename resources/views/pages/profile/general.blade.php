@@ -2,7 +2,7 @@
     <div class="col-lg-4">
         <div class="card ">
             <div class="card-header">
-                <h4>Profile Pengguna</h4>
+                <h4>Profil Pengguna</h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled list-unstyled-border">
@@ -17,7 +17,7 @@
                     <li class="media">
                         <div class="media-body">
                             <a href="" class="btn bg-main text-white btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
-                                <i class="fas fa-camera"></i> Ganti Foto Profile
+                                <i class="fas fa-camera"></i> Ganti Foto Profil
                             </a>
                         </div>
                     </li>
@@ -26,7 +26,7 @@
                             <div class="float-right">
                                 <div class="font-weight-600 text-muted text-small">general</div>
                             </div>
-                            <div class="media-title">Jenis Profile</div>
+                            <div class="media-title">Jenis Profil</div>
                         </div>
                     </li>
                     {{-- <li class="media">
@@ -38,19 +38,22 @@
                     <li class="media">
                         <div class="media-body">
                             <div class="float-right">
-                                <div class="font-weight-600 text-muted text-small">03-09-2018</div>
+                                <div class="font-weight-600 text-muted text-small">04 juli 2022</div>
                             </div>
                             <div class="media-title">Tanggal Dibuat</div>
                         </div>
                     </li>
                     <li class="media">
                         <div class="media-body">
+                            <form action="{{ URL::to('/ubah_password') }}" method="POST">
+                                @csrf
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Ganti Kata sandi" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control" placeholder="Ganti Kata sandi" aria-label="Recipient's username" aria-describedby="basic-addon2" name="password">
                                 <div class="input-group-append">
-                                    <button class="btn bg-main text-white" type="button">Ganti</button>
+                                    <button class="btn bg-main text-white" type="submit">Ganti</button>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </li>
                     {{-- <li class="media">
@@ -72,7 +75,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Detail Profile</h4>
+                <h4>Detail Profil</h4>
             </div>
             <div class="card-body">
                 <div class="container">
@@ -91,23 +94,28 @@
                                 <table class="table table-striped">
                                     <tr>
                                         <td class="bg-soft-primary">Nama</td>
-                                        <td>{{ $user->name }}</td>
+                                        {{-- <td>{{ $user->name }}</td> --}}
+                                        <td>Hastini</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-soft-primary">Jensi Kelamin</td>
-                                        <td>{{ $user->jenis_kelamin }}</td>
+                                        {{-- <td>{{ $user->jenis_kelamin }}</td> --}}
+                                        <td>Perempuan</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-soft-primary">Tempat Dan Tanggal Lahir</td>
-                                        <td>{{ $user->tempat_lahir . "  " . $user->tanggal_lahir }}</td>
+                                        {{-- <td>{{ $user->tempat_lahir . "  " . $user->tanggal_lahir }}</td> --}}
+                                        <td>Maros, 08 Januari 1997</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-soft-primary">Alamat</td>
-                                        <td>{{ $user->alamat }}</td>
+                                        {{-- <td>{{ $user->alamat }}</td> --}}
+                                        <td>Maros</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-soft-primary">Telepon</td>
-                                        <td>{{ $user->no_telp }}</td>
+                                        {{-- <td>{{ $user->no_telp }}</td> --}}
+                                        <td> 082393388147</td>
                                     </tr>
                                 </table>
                                 {{-- <div class="alert alert-info">silahkan hubungi admin jika terdapat kesalahan data</div> --}}
@@ -119,7 +127,7 @@
                         <li class="media">
                             <div class="media-body">
                                 <a href="" class="btn bg-main text-white btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
-                                    <i class="fas fa-camera"></i> Ganti Foto Profile
+                                    <i class="fas fa-camera"></i> Ganti Foto Profil
                                 </a>
                                 {{-- <a href="" class="btn bg-main text-white btn-lg btn-block btn-icon-split">
                                     <i class="fas fa-pen"></i> Edit Biodata

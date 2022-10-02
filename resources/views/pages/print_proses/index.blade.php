@@ -71,7 +71,7 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            , url: '/admin/get_data_proses'
+            , url: '/admin/get_data_proses/' + '{{ $id_produk }}'
             // , dataType: 'json'
             , success: function(data) {
                 console.log('u do it');

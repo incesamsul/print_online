@@ -19,7 +19,7 @@
                 </li>
                 <li class="media">
                   <div class="media-body">
-                      <div class="float-right"><div class="font-weight-600 text-muted text-small">03-09-2090</div></div>
+                      <div class="float-right"><div class="font-weight-600 text-muted text-small"> 04 Juli 2022</div></div>
                       <div class="media-title">Tanggal Dibuat</div>
                   </div>
                 </li>

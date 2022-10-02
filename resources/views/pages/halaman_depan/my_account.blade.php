@@ -4,8 +4,8 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">My account</a></li>
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Akun saya</a></li>
         </ol>
     </div>
 </section>
@@ -19,16 +19,16 @@
                     <div class="d-flex flex-column align-items-start mb-3">
                       <img  src="{{ auth()->user()->foto == "" ? asset('stisla/assets/img/avatar/avatar-1.png') : asset('data/foto_profile/'.auth()->user()->foto . '/'. auth()->user()->foto) }}" alt="" class="rounded-circle-profile mb-2" width="100">
                       <a href="" class="btn bg-main text-white btn-sm" data-toggle="modal" data-target="#modal">
-                        <i class="fas fa-camera"></i> Ganti Foto Profile
+                        <i class="fas fa-camera"></i> Ganti Foto Profil
                       </a>
                     </div>
-                      <p>name : {{ auth()->user()->name }}</p>
+                      <p>nama : {{ auth()->user()->name }}</p>
                       <p>email : {{ auth()->user()->email }}</p>
                 </div>
             </div>
             <div class="col-sm-4">
               <div class="section-title">
-                  <h2>User menu</h2>
+                  <h2>Menu pengguna</h2>
                   @include('components.user_menu')
               </div>
           </div>
@@ -46,7 +46,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalLabel">ganti foto profile</h5>
+          <h5 class="modal-title" id="modalLabel">ganti foto profil</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

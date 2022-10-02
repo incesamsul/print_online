@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::post('/postRegistrasi', [LoginController::class, 'postRegistrasi']);
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/', [Home::class, 'beranda']);
+Route::get('/beranda', [Home::class, 'beranda']);
+Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('/about_us', [Home::class, 'aboutUs']);
 Route::get('/detail/{id_produk}', [Admin::class, 'detailProduk']);
 Route::get('/cart', [Home::class, 'cart']);
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
     Route::get('/profile', [General::class, 'profile']);
     Route::get('/bantuan', [General::class, 'bantuan']);
 
+    Route::post('/ubah_password', [General::class, 'ubahPassword']);
     Route::post('/ubah_foto_profile', [General::class, 'ubahFotoProfile']);
     Route::post('/ubah_role', [General::class, 'ubahRole']);
 });
@@ -83,8 +85,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
         Route::get('/list_print/{id_produk}', [Admin::class, 'listPrint']);
         Route::get('/print_proses/{id_produk}', [Admin::class, 'printProses']);
         Route::get('/print_selesai/{id_produk}', [Admin::class, 'printSelesai']);
-        Route::get('/get_data_antrian', [Admin::class, 'getDataAntrian']);
-        Route::get('/get_data_proses', [Admin::class, 'getDataProses']);
+        Route::get('/get_data_antrian/{id_produk}', [Admin::class, 'getDataAntrian']);
+        Route::get('/get_data_proses/{id_produk}', [Admin::class, 'getDataProses']);
         Route::get('/update_print_status/{id_print_list}', [Admin::class, 'updatePrintStatus']);
         Route::get('/update_print_status_selesai/{id_print_list}', [Admin::class, 'updatePrintStatusSelesai']);
 

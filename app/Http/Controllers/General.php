@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\PrintList;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
@@ -20,7 +21,13 @@ class General extends Controller
 
     public function dashboard()
     {
-        return view('pages.dashboard.index');
+        $data['transaksi'] = Transaksi::all();
+        $data['antri'] = PrintList::where('status_print', 'antri')->get();
+        $data['proses'] = PrintList::where('status_print', 'proses')->get();
+        $data['selesai'] = PrintList::where('status_print', 'proses')->get();
+        $data['pengguna'] = User::where('role', 'user')->get();
+        $data['total_pemasukan'] = Transaksi::all()->sum('total_amount');
+        return view('pages.dashboard.index', $data);
     }
 
     public function profile()

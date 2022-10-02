@@ -4,9 +4,9 @@
 <section class="breadcrumb-section pb-3 pt-3">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Products</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="#">Produk</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Keranjang</li>
         </ol>
     </div>
 </section>
@@ -19,7 +19,7 @@
                     <h2>Keranjangku</h2>
                     <table class="table table-striped">
                         <tr>
-                            <th>Product</th>
+                            <th>Produk</th>
                             {{-- <th>Harga</th> --}}
                             <th>File</th>
                             <th>warna</th>
@@ -79,10 +79,10 @@
             </div>
             <div class="col-sm-4">
                 <div class="section-title">
-                    <h2>Cart total</h2>
+                    <h2>Total</h2>
                     <table class="table">
                         <tr>
-                            <th>(bw){{ count($cart) > 0 ? $row->lbr_bw : '' }} x Rp. {{  count($cart) > 0 ? number_format($row->produk->harga_bw) : '' }}</th>
+                            <th>(hitam putih){{ count($cart) > 0 ? $row->lbr_bw : '' }} x Rp. {{  count($cart) > 0 ? number_format($row->produk->harga_bw) : '' }}</th>
                             <th>{{ count($cart) > 0 ? number_format($row->lbr_bw * $row->produk->harga_bw) : '' }}</th>
                         </tr>
                         <tr>
