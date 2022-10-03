@@ -15,24 +15,17 @@
                 </form>
                 <ul class="navbar-nav navbar-right">
 
-                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i><span id="jml_notif"></span></a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                            <div class="dropdown-header">Berita terbaru
+                            <div class="dropdown-header">Notifikasi terbaru
                                 <div class="float-right">
-                                    <a href="#">Mark All As Read</a>
+                                    <a href="{{ URL::to('admin/tandai_sudah_dibaca') }}">tandai sudah di baca</a>
                                 </div>
                             </div>
-                            <div class="dropdown-list-content dropdown-list-icons">
+                            <div class="dropdown-list-content dropdown-list-icons" id="notifikasi">
                                 <a href="#" class="dropdown-item dropdown-item-unread">
-                                    <div class="dropdown-item-icon bg-primary text-white">
-                                        1
-                                    </div>
-                                    <div class="dropdown-item-desc">
-                                        Belum ada berita apapun
-                                        <div class="time text-primary">Asap</div>
-                                    </div>
-                                </a>
 
+                                </a>
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>

@@ -18,6 +18,7 @@ class CreatePrintListTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedInteger('id_produk');
             $table->string('file');
+            $table->enum('read', ['0', '1'])->default('0');
             $table->enum('status_print', ['ready', 'antri', 'proses', 'selesai'])->default('ready');
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_produk')->references('id_produk')->on('produk')->onUpdate('cascade')->onDelete('cascade');

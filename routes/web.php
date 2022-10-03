@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
         Route::get('/get_data_proses/{id_produk}', [Admin::class, 'getDataProses']);
         Route::get('/update_print_status/{id_print_list}', [Admin::class, 'updatePrintStatus']);
         Route::get('/update_print_status_selesai/{id_print_list}', [Admin::class, 'updatePrintStatusSelesai']);
+        Route::get('/tandai_sudah_dibaca', [Admin::class, 'tandaiSudahDibaca']);
 
         // CRUD PRODUK
         Route::post('/simpan_produk', [Admin::class, 'simpanProduk']);

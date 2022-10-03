@@ -1,4 +1,55 @@
 // MENGHILANGKAN LOADER KETIKA HALAMAN TELAH TERLOAD
+
+
+$.ajaxSetup({
+    timeout: 3000,
+    retryAfter: 3000
+});
+
+function reqNotif(param) {
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/api/get_data_notif',
+        dataType: 'json',
+        success: function(data) {
+            console.log('u do it');
+            console.log(data);
+            if (data.notif.length < 1) {
+                let notifHTML = '';
+                notifHTML += '<a href="#" class="dropdown-item dropdown-item-unread">';
+                notifHTML += '<div class="dropdown-item-icon bg-primary text-white">-</div>';
+                notifHTML += '<div class="dropdown-item-desc"> belum ada notifikasi <div class="time text-primary">lihat</div>';
+                notifHTML += '</div></a>';
+                $('#notifikasi').html(notifHTML);
+            } else {
+                let jmlNotif = '<sup class="badge badge-circle badge-warning p-1 px-2 mb-3"><small>' + data.notif.length + '</small></sup>';
+                $('#jml_notif').html(jmlNotif);
+                let notifHTML = '';
+                for (i in data.notif) {
+                    notifHTML += '<a href="#" class="dropdown-item dropdown-item-unread">';
+                    notifHTML += '<div class="dropdown-item-icon bg-primary text-white">' + (parseInt(i) + 1) + '</div>';
+                    notifHTML += '<div class="dropdown-item-desc">' + data.notif[i].produk.nama_produk + ' telah selesai<div class="time text-primary">lihat</div>';
+                    notifHTML += '</div></a>';
+                }
+                console.log($('#notifikasi'))
+                $('#notifikasi').html(notifHTML);
+            }
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    })
+}
+
+reqNotif();
+// setInterval(() => {
+//     reqNotif();
+// }, 2000);
+
+
+
 $(function() {
     $('.loader').addClass('hidden');
 })

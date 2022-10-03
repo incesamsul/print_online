@@ -55,36 +55,53 @@ class Admin extends Controller
     public function listPrint($idProduk)
     {
         $data = [];
+        $data['id_produk'] = $idProduk;
         return view('pages.list_print.index', $data);
     }
 
     public function printProses($idProduk)
     {
-        $data['print'] = PrintList::where('status_print', 'proses')->first();
+        $data['id_produk'] = $idProduk;
+        $data['print'] = PrintList::where('status_print', 'proses')->where('id_produk', $idProduk)->first();
         return view('pages.print_proses.index', $data);
     }
 
     public function printSelesai($idProduk)
     {
-        $data['print'] = PrintList::where('status_print', 'selesai')->get();
+        $data['id_produk'] = $idProduk;
+        $data['print'] = PrintList::where('status_print', 'selesai')->where('id_produk', $idProduk)->get();
         return view('pages.print_selesai.index', $data);
     }
 
-    public function getDataAntrian()
+    public function getDataAntrian($id_produk)
     {
         return response([
-            'response' => PrintList::where('status_print', 'antri')->with('produk')->with('user')->first()
+            'response' => PrintList::where('status_print', 'antri')->where('id_produk', $id_produk)->with('produk')->with('user')->first()
         ], 200);
     }
 
-    public function getDataProses()
+    public function getDataProses($id_produk)
     {
-        $print = PrintList::where('status_print', 'proses')->with('produk')->with('user')->first();
+        $print = PrintList::where('status_print', 'proses')->where('id_produk', $id_produk)->with('produk')->with('user')->first();
         $jmlHalaman = $print ? count_pdf_pages($print->file) : 0;
         return response([
             'halaman' => $jmlHalaman,
             'response' => $print
         ], 200);
+    }
+
+    public function getDataNotif()
+    {
+        $notif = PrintList::where('read', '0')->with('produk')->with('user')->get();
+        return response([
+            'notif' => $notif,
+        ], 200);
+    }
+
+    public function tandaiSudahDibaca()
+    {
+        PrintList::query()->update(['read' => '1']);
+        return redirect()->back();
     }
 
     public function updatePrintStatus($idPrintList)
@@ -100,6 +117,7 @@ class Admin extends Controller
     {
         PrintList::where('id_print_list', $idPrintList)->update([
             'status_print' => 'selesai',
+            'read' => '0',
         ]);
         return redirect()->back();
     }
